@@ -13,11 +13,10 @@ const Asset = ({ position, glbUrl }: { position: any, glbUrl: any }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/getAsset/${glbUrl}`, { responseType: 'arraybuffer' });
+                const response = await axios.get(`/assets/${glbUrl}/${glbUrl}.glb`, { responseType: 'arraybuffer' });
                 const gltfLoader = new GLTFLoader();
                 const gltf = await new Promise<THREE.Group>((resolve, reject) => {
-                    const buffer = Buffer.from(response.data, 'binary');
-                    gltfLoader.parse(buffer, '', (gltf) => resolve(gltf.scene), reject);
+                    gltfLoader.parse(response.data, '', (gltf) => resolve(gltf.scene), reject);
                 });
                 setGltf(gltf);
             } catch (error) {

@@ -17,7 +17,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append('file', selectedFile);
       try {
-        await axios.post('/uploadFile', formData);
+        await axios.post('/api/uploadFile', formData);
         alert('File uploaded successfully');
         window.location.href = '/view';
       } catch (error) {
