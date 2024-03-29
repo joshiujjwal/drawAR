@@ -3,16 +3,16 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   server: {
     proxy: {
-      '/uploadFile': {
+      '/api/uploadFile': {
         target: 'https://draw-ar-express.vercel.app',
         changeOrigin: true,
       },
-      '/assets': {
+      '/api/assets': {
         target: 'https://draw-ar-express.vercel.app',
         changeOrigin: true,
       },
-      '/getFiles': {
-        target: 'https://draw-ar-express.vercel.app',
+      '/api/getFiles': {
+        target: 'http://draw-ar-express.vercel.app',
         changeOrigin: true,
       },
     },

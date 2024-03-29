@@ -13,7 +13,7 @@ const View = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/getFiles');
+                const response = await axios.get('/api/getFiles');
                 setAssets(Object.values(response.data)[0] as any[]);
             } catch (error) {
                 console.error('Error fetching assets:', error);
