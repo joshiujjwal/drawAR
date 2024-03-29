@@ -5,14 +5,14 @@ export default defineConfig({
     proxy: {
       '/api/uploadFile': {
         target: 'https://draw-ar-express.vercel.app',
-        changeOrigin: true,
+        changeOrigin: true
       },
       '/api/assets': {
         target: 'https://draw-ar-express.vercel.app',
         changeOrigin: true,
       },
       '/api/getFiles': {
-        target: 'http://draw-ar-express.vercel.app',
+        target: 'https://draw-ar-express.vercel.app',
         changeOrigin: true,
       },
     },

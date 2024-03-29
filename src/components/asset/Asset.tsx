@@ -4,6 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 import axios from 'axios';
+import { Buffer } from 'buffer';
 
 const Asset = ({ position, glbUrl }: { position: any, glbUrl: any }) => {
     const [gltf, setGltf] = useState<THREE.Group | null>(null);
@@ -15,7 +16,8 @@ const Asset = ({ position, glbUrl }: { position: any, glbUrl: any }) => {
                 const response = await axios.get(`/api/getAsset/${glbUrl}`, { responseType: 'arraybuffer' });
                 const gltfLoader = new GLTFLoader();
                 const gltf = await new Promise<THREE.Group>((resolve, reject) => {
-                    gltfLoader.parse(response.data, '', (gltf) => resolve(gltf.scene), reject);
+                    const buffer = Buffer.from(response.data, 'binary');
+                    gltfLoader.parse(buffer, '', (gltf) => resolve(gltf.scene), reject);
                 });
                 setGltf(gltf);
             } catch (error) {
