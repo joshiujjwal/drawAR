@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite && node server.cjs",
-    "build": "vite build && node server.cjs",
-    "start": "vite preview && node server.cjs",
+    "dev": "vite && node src/server.cjs",
+    "build": "vite build && node src/server.cjs",
+    "start": "vite preview && node src/server.cjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
