@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Upload from './components/upload/Upload';
+// import Upload from './components/upload/Upload';
 import XrHitCubeContainer from './components/xr-hit-cube/XrHitCubeContainer'
 import Cube from './components/cube/Cube';
 import XrCube from './components/xr-cube/XrCube';
@@ -14,7 +14,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/cube"  element={<Cube />}  />
       <Route path="/xr-cube" element={<XrCube />} />
-      <Route path="/upload" element={<Upload />} />
+      <Route path="/upload" element={<h1> Upload </h1>} />
       <Route path="/view" element={<XrHitCubeContainer />} />
     </Routes>
   )
