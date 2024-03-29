@@ -22,6 +22,9 @@ const Asset = ({ position, glbUrl }: { position: any, glbUrl: any }) => {
                 setGltf(gltf);
             } catch (error) {
                 console.error('Error fetching GLTF:', error);
+                alert('Error fetching file. Please try later');
+                window.location.href = '/view';
+
             }
         };
 
