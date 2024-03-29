@@ -7,14 +7,14 @@ import axios from 'axios';
 
 const View = () => {
 
-    
-    const [assets, setAssets] = useState([]);
+
+    const [assets, setAssets] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/getFiles');                
-                setAssets(response.data);
+                const response = await axios.get('/getFiles');
+                setAssets(Object.values(response.data)[0] as any[]);
             } catch (error) {
                 console.error('Error fetching assets:', error);
             }
@@ -29,11 +29,14 @@ const View = () => {
                 <DrawNavbar />
                 <Container className="d-flex flex-column align-items-center justify-content-center">
                     <h1>View Assets</h1>
-                    {assets && assets.length > 0 ? (
+                    {assets ? (
                         assets.map((asset: any) => (
                             <Card key={asset.id} style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Title>{asset.name}</Card.Title>
+                                    <Card.Text>
+                                        This asset {asset.name} show amazing pipes
+                                    </Card.Text>
                                     <Card.Link href={`/view/${asset.name}`}>View</Card.Link>
                                 </Card.Body>
                             </Card>
@@ -41,7 +44,7 @@ const View = () => {
                     ) : (
                         <p>No assets found</p>
                     )}
-    
+
                 </Container>
             </ErrorBoundary>
         </>

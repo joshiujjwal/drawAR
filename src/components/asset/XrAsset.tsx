@@ -11,31 +11,31 @@ const XrAsset = ( { glbUrl }: any) => {
 
   const { isPresenting } = useXR();
 
+  const [assetPlaced, setAssetPlaced] = useState(false);
+
   useThree(({ camera }) => {
     if (!isPresenting) {
       camera.position.z = 3;
     }
   });
 
-  useHitTest((hitMatrix, hit) => {
+  useHitTest((hitMatrix) => {
     if (reticleRef.current instanceof THREE.Mesh) {
       const position = new THREE.Vector3();
       position.setFromMatrixPosition(hitMatrix);
-      console.log(hit);
       reticleRef.current.position.copy(position);
-
       if (reticleRef.current) {
         reticleRef.current.rotation.set(-Math.PI / 2, 0, 0);
       }
     }
   });
-
   const [glbLoad, setGlbLoad] = useState<{ position: any; id: number; glbUrl: string }[]>([]);
-
   const placeAsset = (e: any) => {
+    if (assetPlaced) return;
     let position = e.intersection.object.position.clone();
     let id = Date.now();
     setGlbLoad([...glbLoad, { position, id, glbUrl }]);
+    setAssetPlaced(true);
   };
 
   return (
@@ -44,7 +44,7 @@ const XrAsset = ( { glbUrl }: any) => {
       <ambientLight />
       {isPresenting &&
         glbLoad.map(({ position, glbUrl }) => {
-          return <Asset position={position} glbUrl={glbUrl} />;
+          return <Asset position={position} glbUrl={glbUrl} key={glbUrl} />;
         })}
       {isPresenting && (
         <Interactive onSelect={(event: XRInteractionEvent) => placeAsset(event)}>

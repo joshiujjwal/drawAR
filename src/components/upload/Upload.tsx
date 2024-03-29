@@ -21,10 +21,10 @@ const Upload = () => {
         alert('File uploaded successfully');
         window.location.href = '/view';
       } catch (error) {
-        console.error('Error uploading file: ', error);
+        alert('Error uploading file: '+ error);
       }
     } else {
-      console.error('No file selected');
+      alert('No file selected');
     }
   };
    
