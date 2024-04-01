@@ -15,7 +15,7 @@ const AssetContainer = () => {
             }} />
             <Canvas>
                 <XR>                    
-                    <XrAsset glbUrl={id} />
+                    <XrAsset glbUrl={id} nscale={0.4} />
                 </XR>
             </Canvas>
         </>

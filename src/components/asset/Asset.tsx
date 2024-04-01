@@ -6,7 +6,7 @@ import * as THREE from 'three';
 import axios from 'axios';
 import { Buffer } from 'buffer';
 
-const Asset = ({ position, glbUrl }: { position: any, glbUrl: any }) => {
+const Asset = ({ position, glbUrl, nscale }: { position: any, glbUrl: any, nscale: number }) => {
     const [gltf, setGltf] = useState<THREE.Group | null>(null);
     const assetref = useRef<THREE.Group>();
 
@@ -36,7 +36,7 @@ const Asset = ({ position, glbUrl }: { position: any, glbUrl: any }) => {
     useFrame(() => {
         if (assetref.current) {
             // Update your animation or other logic here
-            assetref.current.scale.set(0.1, 0.1, 0.1);
+            assetref.current.scale.set(nscale, nscale, nscale);
         }
     });
 
