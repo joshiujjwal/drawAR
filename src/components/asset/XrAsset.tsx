@@ -6,7 +6,7 @@ import React from "react";
 import Asset from "./Asset";
 import * as THREE from "three";
 
-const XrAsset = ( { glbUrl, nscale }: {glbUrl: any, nscale: number}) => {
+const XrAsset = ( { glbUrl }: any) => {
   const reticleRef = React.useRef<THREE.Mesh>(null);
 
   const { isPresenting } = useXR();
@@ -37,19 +37,14 @@ const XrAsset = ( { glbUrl, nscale }: {glbUrl: any, nscale: number}) => {
     setGlbLoad([...glbLoad, { position, id, glbUrl }]);
     setAssetPlaced(true);
   };
-  const [newscale, setNscale] = React.useState(0.1)
 
   return (
     <>
       <OrbitControls />
       <ambientLight />
       {isPresenting &&
-        glbLoad.map(({ position, id, glbUrl }) => {
-          return (
-            <Interactive key={id} onSelect={() => setNscale(0.9)} >
-              <Asset position={position} glbUrl={glbUrl} nscale={newscale} key={glbUrl} />;
-            </Interactive>
-          )
+        glbLoad.map(({ position, glbUrl }) => {
+          return <Asset position={position} glbUrl={glbUrl} key={glbUrl} />;
         })}
       {isPresenting && (
         <Interactive onSelect={(event: XRInteractionEvent) => placeAsset(event)}>
@@ -60,7 +55,7 @@ const XrAsset = ( { glbUrl, nscale }: {glbUrl: any, nscale: number}) => {
         </Interactive>
       )}
 
-      {!isPresenting && <Asset glbUrl={glbUrl} position={undefined} nscale={nscale}/>}
+      {!isPresenting && <Asset glbUrl={glbUrl} position={undefined} />}
     </>
   );
 };
