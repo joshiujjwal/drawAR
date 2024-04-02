@@ -53,7 +53,7 @@ const View = () => {
                             assets.map((asset: any) => (
 
                                 <Card key={asset.id} >
-                                    <Card.Img variant="top" src="holder.js/100px160" />
+                                    <Card.Img variant="top" src={asset.img} style={{height: "200px", width: "200px"}} />
                                     <Card.Body>
                                         <Card.Title>{asset.name}</Card.Title>
                                         <Card.Text>

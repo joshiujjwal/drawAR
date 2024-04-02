@@ -16,13 +16,12 @@ const AssetContainer = () => {
                 // if browser does not support hit-test, it will not show the button
                 requiredFeatures: ["hit-test"],
             }} />
-                        <Container >
-
-            <Canvas style={{height: "80vh"}}>
-                <XR>                    
-                    <XrAsset glbUrl={id} />
-                </XR>
-            </Canvas>
+            <Container >
+                <Canvas style={{ height: "80vh" }}>
+                    <XR>
+                        <XrAsset glbUrl={id} />
+                    </XR>
+                </Canvas>
             </Container>
         </>
     );

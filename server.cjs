@@ -68,7 +68,8 @@ app.get('/api/getFiles', (req, res) => {
     return {
       id: index + 1,
       name: file,
-      lastModified: fs.statSync(path.join(assetsDirectoryPath, file)).mtime
+      lastModified: fs.statSync(path.join(assetsDirectoryPath, file)).mtime,
+      img: `http://localhost:3000/${file}/${file}.jpg`
     };
   });
   res.status(200).send({ data: filesWithId });

@@ -6,7 +6,7 @@ import React from "react";
 import Asset from "./Asset";
 import * as THREE from "three";
 
-const XrAsset = ( { glbUrl }: any) => {
+const XrAsset = ({ glbUrl }: any) => {
   const reticleRef = React.useRef<THREE.Mesh>(null);
 
   const { isPresenting } = useXR();
@@ -38,13 +38,26 @@ const XrAsset = ( { glbUrl }: any) => {
     setAssetPlaced(true);
   };
 
+  const [scale, setScale] = useState(0.1);
+
+  const assetInteraction = (e: any) => {
+    if (scale > 0.3) return;
+    setScale(scale + 0.1);
+  };
+
+
+
   return (
     <>
       <OrbitControls />
       <ambientLight />
       {isPresenting &&
         glbLoad.map(({ position, glbUrl }) => {
-          return <Asset position={position} glbUrl={glbUrl} key={glbUrl} />;
+          return (
+            <Interactive onSelect={(event: XRInteractionEvent) => assetInteraction(event)} >
+              <Asset position={position} glbUrl={glbUrl} key={glbUrl} scale={scale} />
+            </Interactive>
+          );
         })}
       {isPresenting && (
         <Interactive onSelect={(event: XRInteractionEvent) => placeAsset(event)}>
@@ -55,7 +68,7 @@ const XrAsset = ( { glbUrl }: any) => {
         </Interactive>
       )}
 
-      {!isPresenting && <Asset glbUrl={glbUrl} position={undefined} />}
+      {!isPresenting && <Asset glbUrl={glbUrl} position={undefined} scale={scale} />}
     </>
   );
 };
