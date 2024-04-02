@@ -43,6 +43,7 @@ const View = () => {
             }
         };
 
+    const imgUrl = "https://d0d2-44-209-53-215.ngrok-free.app/"
     return (
         <>
             <ErrorBoundary>
@@ -54,7 +55,7 @@ const View = () => {
                             assets.map((asset: any) => (
 
                                 <Card key={asset.id} >
-                                    <Card.Img variant="top" src={"http://"+window.location.host.split(":")[0] + ":3000/" + asset.img} style={{height: "200px", width: "200px"}} />
+                                    <Card.Img variant="top" src={imgUrl + asset.img} style={{height: "200px", width: "200px"}} />
                                     <Card.Body>
                                         <Card.Title>{asset.name}</Card.Title>
                                         <Card.Text>
