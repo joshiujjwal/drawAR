@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
+import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
   server: {
+    https: true,
     proxy: {
       '/api/uploadFile': {
         target: 'http://localhost:3000',
@@ -18,5 +20,8 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+      basicSsl(), 
+  ],
 });
 

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "server": "node server.cjs",
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "start": "concurrently \"npm run server\" \"npm run dev\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
@@ -40,6 +40,7 @@
     "@types/react-dom": "^18.2.23",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
     "@vitejs/plugin-react": "^4.2.1",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
