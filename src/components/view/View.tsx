@@ -16,6 +16,7 @@ const View = () => {
             try {
                 const response = await axios.get('/api/getFiles');
                 setAssets(Object.values(response.data)[0] as any[]);
+                console.log('Assets:', Object.values(response.data)[0]);
             } catch (error) {
                 console.error('Error fetching assets:', error);
             }
@@ -53,7 +54,7 @@ const View = () => {
                             assets.map((asset: any) => (
 
                                 <Card key={asset.id} >
-                                    <Card.Img variant="top" src={asset.img} style={{height: "200px", width: "200px"}} />
+                                    <Card.Img variant="top" src={"http://"+window.location.host.split(":")[0] + ":3000/" + asset.img} style={{height: "200px", width: "200px"}} />
                                     <Card.Body>
                                         <Card.Title>{asset.name}</Card.Title>
                                         <Card.Text>
