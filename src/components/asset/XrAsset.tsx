@@ -41,7 +41,10 @@ const XrAsset = ({ glbUrl }: any) => {
   const [scale, setScale] = useState(0.1);
 
   const assetInteraction = (e: any) => {
-    if (scale > 0.3) return;
+    if (scale > 0.3) {
+      setScale(0.1);
+      return
+    };
     setScale(scale + 0.1);
   };
 
