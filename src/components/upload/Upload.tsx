@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import axios from 'axios';
 import DrawNavbar from '../drawnavbar/DrawNavbar';
 
@@ -33,10 +33,11 @@ const Upload = () => {
         <>
             <DrawNavbar />
             <Container className="d-flex flex-column align-items-center justify-content-center">
-                <Form.Group controlId="formFile" className="mb-3"> 
+                <Form.Group controlId="formFile" className="mb-3" style={{marginTop: "10vh"}}> 
                     <Form.Control type="file" onChange={handleFileChange} placeholder='Only nwd or obj'/>
+                    <Button style= {{width: "-webkit-fill-available", backgroundColor: "black", border: "none"}}onClick={handleSubmit}>Upload</Button>
                 </Form.Group>
-                <button onClick={handleSubmit}>Upload</button>
+
             </Container>
         </>
     )
