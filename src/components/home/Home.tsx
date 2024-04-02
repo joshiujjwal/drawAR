@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import DrawNavbar from '../drawnavbar/DrawNavbar';
-import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
     return (
@@ -13,9 +12,13 @@ const Home: React.FC = () => {
                     <br></br>
                     You can upload your 3D models in .glb format and view them in AR.
                 </p>
-                <Button style={{ backgroundColor: "black", border: "none" }} size="sm" className="mt-3">
-                    <Link to="/view" style={{ color: "white" }}>View in AR</Link>
-                </Button>
+                <h3>Demo</h3>
+                <img
+                    src='src/asset/walkthrough.gif'
+                    alt="Walkthrough"
+                    className="img-fluid"
+                    style={{ maxHeight: "100%", maxWidth: "100%" }}
+                />
             </Container>
         </>
     );
