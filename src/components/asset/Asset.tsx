@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { useFrame, } from '@react-three/fiber';
+import { useFrame, useThree, } from '@react-three/fiber';
 import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'three';
@@ -10,6 +10,7 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 const Asset = ({ position, glbUrl, scale, isLocal }: { position: any, glbUrl: any, scale: any, isLocal: any }) => {
     const [gltf, setGltf] = useState<THREE.Group | null>(null);
     const assetref = useRef<THREE.Group>();
+
     useEffect(() => {
 
         const fetchLocalData = async () => {
@@ -25,16 +26,15 @@ const Asset = ({ position, glbUrl, scale, isLocal }: { position: any, glbUrl: an
                     const extension = glbUrl.split('.').pop();
                     if (extension === 'fbx') {
                         const fbxLoader = new FBXLoader();
-                        const fbx = await new Promise<THREE.Group>((resolve, reject) => {
-                            fbxLoader.parse(arrayBuffer, '', (fbx) => resolve(fbx), reject);
-                        });
-                        setGltf(fbx);
-                    }
+                        const object = await fbxLoader.parse(arrayBuffer, '')
+                        setGltf(object);
+                    } else {
                     const gltfLoader = new GLTFLoader();
                     const gltf = await new Promise<THREE.Group>((resolve, reject) => {
                         gltfLoader.parse(arrayBuffer, '', (gltf) => resolve(gltf.scene), reject);
                     });
                     setGltf(gltf);
+                    }
 
                 };
                 request.onerror = () => {
