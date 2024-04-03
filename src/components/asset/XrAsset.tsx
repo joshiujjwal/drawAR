@@ -53,7 +53,8 @@ const XrAsset = ({ glbUrl, isLocal }: {glbUrl: any, isLocal: any}) => {
   return (
     <>
       <OrbitControls />
-      <ambientLight />
+      <ambientLight intensity={0.5}/>
+      <directionalLight position={[10, 10, 5]} intensity={1} />
       {isPresenting &&
         glbLoad.map(({ position, id, glbUrl }, index) => {
           return (

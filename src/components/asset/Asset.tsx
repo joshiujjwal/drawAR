@@ -80,6 +80,7 @@ const Asset = ({ position, glbUrl, scale, isLocal }: { position: any, glbUrl: an
             {gltf && <primitive object={gltf} ref={assetref} position={position} />}
             <OrbitControls />
             <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1} /> // Adding directional light
         </>
     );
 };
