@@ -14,7 +14,7 @@ const Home: React.FC = () => {
                 </p>
                 <h3>Demo</h3>
                 <img
-                    src='src/asset/walkthrough.gif'
+                    src='src/asset/walkthrough1.gif'
                     alt="Walkthrough"
                     className="img-fluid"
                     style={{ maxHeight: "100%", maxWidth: "100%" }}

@@ -6,7 +6,7 @@ import React from "react";
 import Asset from "./Asset";
 import * as THREE from "three";
 
-const XrAsset = ({ glbUrl, isLocal }: {glbUrl: any, isLocal: Boolean}) => {
+const XrAsset = ({ glbUrl, isLocal }: {glbUrl: any, isLocal: any}) => {
   const reticleRef = React.useRef<THREE.Mesh>(null);
 
   const { isPresenting } = useXR();

@@ -10,7 +10,6 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 const Asset = ({ position, glbUrl, scale, isLocal }: { position: any, glbUrl: any, scale: any, isLocal: any }) => {
     const [gltf, setGltf] = useState<THREE.Group | null>(null);
     const assetref = useRef<THREE.Group>();
-
     useEffect(() => {
 
         const fetchLocalData = async () => {
@@ -62,7 +61,7 @@ const Asset = ({ position, glbUrl, scale, isLocal }: { position: any, glbUrl: an
 
             }
         };
-        if (isLocal) fetchLocalData();
+        if (isLocal == "true") fetchLocalData();
         else fetchData();
         if (assetref.current && gltf) {
             assetref.current.scale.set(scale, scale, scale);
