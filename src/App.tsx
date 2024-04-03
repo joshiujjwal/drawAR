@@ -18,7 +18,7 @@ function App() {
       <Route path="/xr-cube" element={<XrCube />} />
       <Route path="/upload" element={<Upload />} />
       <Route path="/view" element={<View/>} />
-      <Route path="/view/:id" element={<AssetContainer />} />
+      <Route path="/view/:id/:local" element={<AssetContainer />} />
     </Routes>
   )
 }

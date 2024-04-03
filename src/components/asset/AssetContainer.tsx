@@ -6,8 +6,7 @@ import { Container } from "react-bootstrap";
 import DrawNavbar from "../drawnavbar/DrawNavbar";
 
 const AssetContainer = () => {
-    let { id } = useParams<{ id: string }>();
-
+    let { id, local } = useParams<{ id: string, local: string }>();
     return (
         <>
             <DrawNavbar />
@@ -19,7 +18,7 @@ const AssetContainer = () => {
             <Container >
                 <Canvas style={{ height: "80vh" }}>
                     <XR>
-                        <XrAsset glbUrl={id} />
+                        <XrAsset glbUrl={id} isLocal={local} />
                     </XR>
                 </Canvas>
             </Container>

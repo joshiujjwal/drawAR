@@ -34,7 +34,7 @@ const Upload = () => {
             <DrawNavbar />
             <Container className="d-flex flex-column align-items-center justify-content-center">
                 <Form.Group controlId="formFile" className="mb-3" style={{marginTop: "10vh"}}> 
-                    <Form.Control type="file" onChange={handleFileChange} placeholder='Only nwd or obj'/>
+                    <Form.Control type="file" accept=".glb" onChange={handleFileChange} placeholder='Only glb files'/>
                     <Button style= {{width: "-webkit-fill-available", backgroundColor: "black", border: "none"}}onClick={handleSubmit}>Upload</Button>
                 </Form.Group>
 

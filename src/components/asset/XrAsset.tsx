@@ -6,7 +6,7 @@ import React from "react";
 import Asset from "./Asset";
 import * as THREE from "three";
 
-const XrAsset = ({ glbUrl }: any) => {
+const XrAsset = ({ glbUrl, isLocal }: {glbUrl: any, isLocal: Boolean}) => {
   const reticleRef = React.useRef<THREE.Mesh>(null);
 
   const { isPresenting } = useXR();
@@ -55,10 +55,10 @@ const XrAsset = ({ glbUrl }: any) => {
       <OrbitControls />
       <ambientLight />
       {isPresenting &&
-        glbLoad.map(({ position, glbUrl }) => {
+        glbLoad.map(({ position, id, glbUrl }, index) => {
           return (
             <Interactive onSelect={(event: XRInteractionEvent) => assetInteraction(event)} >
-              <Asset position={position} glbUrl={glbUrl} key={glbUrl} scale={scale} />
+              <Asset position={position} glbUrl={glbUrl} key={id-index} scale={scale} isLocal={isLocal}/>
             </Interactive>
           );
         })}
@@ -71,7 +71,7 @@ const XrAsset = ({ glbUrl }: any) => {
         </Interactive>
       )}
 
-      {!isPresenting && <Asset glbUrl={glbUrl} position={undefined} scale={scale} />}
+      {!isPresenting && <Asset glbUrl={glbUrl} position={undefined} scale={scale} isLocal={isLocal} />}
     </>
   );
 };
